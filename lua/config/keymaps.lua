@@ -3,15 +3,20 @@
 -- Add any additional keymaps here
 
 local map = vim.keymap.set
+local hop = require("hop")
 
 -- Hop.nvim
-map({ "n", "i" }, "ghw", "<cmd>:HopWord<cr>", { noremap = true })
-map({ "n", "i" }, "ghj", "<cmd>:HopLineStart<cr>", { noremap = true })
-map({ "n", "i" }, "gh/", "<cmd>:HopPattern<cr>", { noremap = true })
-map({ "n", "i" }, "ghs", "<cmd>:HopChar2<cr>", { noremap = true })
+map({ "n", "i" }, "ghe", function()
+  hop.hint_words({ hop.a, hint_position = require("hop.hint").HintPosition.END })
+end, { noremap = true })
+
+map({ "n", "i" }, "ghw", "<cmd>HopWord<cr>", { noremap = true })
+map({ "n", "i" }, "ghj", "<cmd>HopLineStart<cr>", { noremap = true })
+map({ "n", "i" }, "gh/", "<cmd>HopPattern<cr>", { noremap = true })
+map({ "n", "i" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
 
 -- Open Neotree
-map("n", "<C-f>", ":Neotree<CR>", {})
+map("n", "<C-f>", "<cmd>Neotree<CR>", {})
 
 -- Exit insert mode and save file 'fds'
 map({ "i", "n" }, "fds", function()
