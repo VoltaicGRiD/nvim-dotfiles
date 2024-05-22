@@ -6,17 +6,31 @@ local map = vim.keymap.set
 local hop = require("hop")
 
 -- Hop.nvim
-map({ "n", "i" }, "ghe", function()
-  hop.hint_words({ hop.a, hint_position = require("hop.hint").HintPosition.END })
+map({ "n", "i", "o" }, "ghe", function()
+  hop.hint_words({ hop.a, hint_position = require("hop.hint").HintPosition.END, hint_offset = 1 })
 end, { noremap = true })
+map({ "n", "i", "o" }, "ghw", "<cmd>HopWord<cr>", { noremap = true })
+map({ "n", "i", "o" }, "ghj", "<cmd>HopLineStart<cr>", { noremap = true })
+map({ "n", "i", "o" }, "gh/", "<cmd>HopPattern<cr>", { noremap = true })
+map({ "n", "i", "o" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
 
-map({ "n", "i" }, "ghw", "<cmd>HopWord<cr>", { noremap = true })
-map({ "n", "i" }, "ghj", "<cmd>HopLineStart<cr>", { noremap = true })
-map({ "n", "i" }, "gh/", "<cmd>HopPattern<cr>", { noremap = true })
-map({ "n", "i" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
+-- Possession.nvim
+map({ "n" }, "<leader>ox", ":PossessionSave! ", { desc = "Save session [name]", noremap = true })
+map({ "n" }, "<leader>ol", function()
+  require("telescope").extensions.possession.list()
+end, { desc = "List sessions (telescope)", noremap = true })
+map({ "n" }, "<leader>oo", ":PossessionLoad ", { desc = "Load session [name]", noremap = true })
+map({ "n" }, "<leader>od", ":PossessionDelete ", { desc = "Delete session [name]", noremap = true })
+map({ "n" }, "<leader>or", ":PossessionRename ", { desc = "Rename session [name] [new name]", noremap = true })
+
+-- fixes
+map({ "n" }, "<leader>r", "<cmd>redo<cr>", { noremap = true })
+map({ "x" }, "<leader>p", [["_dP]])
 
 -- Open Neotree
 map("n", "<C-f>", "<cmd>Neotree<CR>", {})
+
+--
 
 -- Exit insert mode and save file 'fds'
 map({ "i", "n" }, "fds", function()
@@ -31,6 +45,9 @@ map("i", "fd", function()
   print("Exited insert mode without saving")
 end, { noremap = true, silent = true })
 
-require("which-key").register({
+local wk = require("which-key")
+
+wk.register({
   f = "which_key_ignore",
+  g = "which_key_ignore",
 }, { mode = "i" })
