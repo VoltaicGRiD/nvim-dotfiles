@@ -6,6 +6,9 @@ return {
     keys = function()
       return {}
     end,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
   },
   -- then: setup supertab in cmp
   {
