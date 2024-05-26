@@ -3,17 +3,24 @@
 -- Add any additional options here
 
 local opt = vim.opt
+local o = vim.o
 
 opt.tabstop = 4
 opt.shiftwidth = 4
-opt.scrolloff = 10
+opt.scrolloff = 15
 opt.colorcolumn = { 80, 120 }
-opt.list = false
+opt.list = true
+opt.listchars = { tab = "-->", multispace = " ", trail = "", extends = "⟩", precedes = "⟨" }
+opt.jumpoptions = "stack,view"
+opt.foldmethod = "indent"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.undofile = true
+opt.inccommand = "split"
 
-vim.o.shell = "powershell"
-vim.o.shellcmdflag =
+o.shell = "powershell"
+o.shellcmdflag =
   "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-vim.o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-vim.o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-vim.o.shellquote = ""
-vim.o.shellxquote = ""
+o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+o.shellquote = ""
+o.shellxquote = ""

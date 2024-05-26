@@ -19,6 +19,9 @@ map({ "n", "i", "o" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
 map({ "n" }, "<leader>t2", "<cmd>set tabstop=2 shiftwidth=2<cr>", { noremap = true })
 map({ "n" }, "<leader>t4", "<cmd>set tabstop=4 shiftwidth=4<cr>", { noremap = true })
 map({ "n" }, "<leader>t8", "<cmd>set tabstop=8 shiftwidth=8<cr>", { noremap = true })
+map({ "n" }, "<leader>to", function()
+  vim.opt.scrolloff = 999 - vim.o.scrolloff
+end, { noremap = true })
 
 -- Possession.nvim
 map({ "n" }, "<leader>ox", ":PossessionSave! ", { desc = "Save session [name]", noremap = true })
@@ -32,6 +35,9 @@ map({ "n" }, "<leader>or", ":PossessionRename ", { desc = "Rename session [name]
 -- fixes
 map({ "n" }, "<leader>r", "<cmd>redo<cr>", { noremap = true })
 map({ "x" }, "<leader>p", [["_dP]])
+map({ "n" }, "<leader><leader>g", "<cmd>Telescope live_grep<cr>", { noremap = true })
+map({ "n" }, "<leader><leader>f", "<cmd>Telescope find_files<cr>", { noremap = true })
+map({ "n" }, "<leader><leader>", function() end, { noremap = true })
 
 -- Open Neotree
 map("n", "<C-f>", "<cmd>Neotree<CR>", {})
