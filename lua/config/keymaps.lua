@@ -10,10 +10,10 @@ local hop = require("hop")
 map({ "n", "i", "o" }, "ghe", function()
   hop.hint_words({ hop.a, hint_position = require("hop.hint").HintPosition.END, hint_offset = 1 })
 end, { noremap = true })
-map({ "n", "i", "o" }, "ghw", "<cmd>HopWord<cr>", { noremap = true })
-map({ "n", "i", "o" }, "ghj", "<cmd>HopLineStart<cr>", { noremap = true })
-map({ "n", "i", "o" }, "gh/", "<cmd>HopPattern<cr>", { noremap = true })
-map({ "n", "i", "o" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
+map({ "n", "o" }, "ghw", "<cmd>HopWord<cr>", { noremap = true })
+map({ "n", "o" }, "ghj", "<cmd>HopLineStart<cr>", { noremap = true })
+map({ "n", "o" }, "gh/", "<cmd>HopPattern<cr>", { noremap = true })
+map({ "n", "o" }, "ghs", "<cmd>HopChar2<cr>", { noremap = true })
 
 -- Shiftwidth + Tabstop
 map({ "n" }, "<leader>t2", "<cmd>set tabstop=2 shiftwidth=2<cr>", { noremap = true })
@@ -42,7 +42,18 @@ map({ "n" }, "<leader><leader>", function() end, { noremap = true })
 -- Open Neotree
 map("n", "<C-f>", "<cmd>Neotree<CR>", {})
 
---
+-- Luasnip
+map("n", "<leader>se", function()
+  require("luasnip.loaders").edit_snippet_files()
+end, { noremap = true })
+
+map("n", "<leader>sE", function()
+  local dir = vim.fn.stdpath("config") .. "\\luasnippets\\all.lua"
+end, { noremap = true })
+
+map("i", "<c-u>", "<cmd>lua require('luasnip.extras.select_choice')()<cr>", { noremap = true })
+map({ "i", "s" }, "<C-n>", "<Plug>luasnip-next-choice", {})
+map({ "i", "s" }, "<C-p>", "<Plug>luasnip-prev-choice", {})
 
 -- Exit insert mode and save file 'fds'
 map({ "i", "n" }, "fds", function()
