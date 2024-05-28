@@ -27,6 +27,16 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      opts.completion = {
+        completeopt = "menu,menuone,noinsert,noselect",
+      }
+
+      opts.mapping = cmp.mapping.preset.insert(vim.tbl_deep_extend("force", opts.mapping, {
+        -- My config
+        ["<CR>"] = cmp.mapping.confirm({ select = false }), -- 'select = false' to only confirm explicitly selected item
+        ["<S-CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      }))
+
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<CR>"] = nil,
         ["<Tab>"] = cmp.mapping(function(fallback)
