@@ -5,10 +5,10 @@
 local opt = vim.opt
 local o = vim.o
 
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.scrolloff = 15
-opt.colorcolumn = { 80, 120 }
+opt.colorcolumn = { 80 }
 opt.list = true
 opt.listchars = { tab = "-->", multispace = " ", trail = "", extends = "⟩", precedes = "⟨" }
 opt.jumpoptions = "stack,view"
@@ -24,3 +24,5 @@ o.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
 o.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
 o.shellquote = ""
 o.shellxquote = ""
+
+vim.cmd("colorscheme habamax")

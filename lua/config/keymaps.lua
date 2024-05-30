@@ -25,7 +25,19 @@ map({ "n" }, "<leader>t4", "<cmd>set tabstop=4 shiftwidth=4<cr>", { noremap = tr
 map({ "n" }, "<leader>t8", "<cmd>set tabstop=8 shiftwidth=8<cr>", { noremap = true })
 map({ "n" }, "<leader>to", function()
   vim.opt.scrolloff = 999 - vim.o.scrolloff
-end, { noremap = true })
+end, { desc = "Toggle scroll-lock", noremap = true })
+
+map({ "n" }, "<leader>tc", function() end, { desc = "Set colorschemes" })
+
+map({ "n" }, "<leader>tcl", function() end, { desc = "Light" })
+map({ "n" }, "<leader>tcll", "<cmd>colorscheme shine<cr>", { noremap = true })
+map({ "n" }, "<leader>tcld", "<cmd>colorscheme tokyonight-day<cr>", { noremap = true })
+
+map({ "n" }, "<leader>tcd", function() end, { desc = "Dark" })
+map({ "n" }, "<leader>tcdm", "<cmd>colorscheme murphy<cr>", { noremap = true })
+map({ "n" }, "<leader>tcdi", "<cmd>colorscheme industry<cr>", { noremap = true })
+map({ "n" }, "<leader>tcdh", "<cmd>colorscheme habamax<cr>", { noremap = true })
+map({ "n" }, "<leader>tcdt", "<cmd>colorscheme tokyonight-night<cr>", { noremap = true })
 
 -- Possession.nvim
 map({ "n" }, "<leader>ox", ":PossessionSave! ", { desc = "Save session [name]", noremap = true })
