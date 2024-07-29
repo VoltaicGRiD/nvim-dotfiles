@@ -27,6 +27,7 @@ map({ "n" }, "<leader>to", function()
   vim.opt.scrolloff = 999 - vim.o.scrolloff
 end, { desc = "Toggle scroll-lock", noremap = true })
 
+-- Colorschemes
 map({ "n" }, "<leader>tc", function() end, { desc = "Set colorschemes" })
 
 map({ "n" }, "<leader>tcl", function() end, { desc = "Light" })
