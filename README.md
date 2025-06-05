@@ -1,4 +1,3 @@
-# 💤 LazyVim
+## VoltaicGRiD Dotfiles
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+A custom "dotfiles" repo for handling my personal neovim customizations. Built off of the LazyVim repository.
